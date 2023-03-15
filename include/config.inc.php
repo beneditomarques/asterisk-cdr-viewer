@@ -3,9 +3,9 @@
 $db_type = 'mysql';
 $db_host = 'localhost';
 $db_port = '3306';
-$db_user = 'cdrasterisk';
-$db_pass = 'astcdr123';
-$db_name = 'cdrasterisk';
+$db_user = 'root';
+$db_pass = 'rootpass';
+$db_name = 'asteriskcdrdb';
 $db_table_name = 'cdr';
 $db_options = array();
 /* $db_options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"); */
@@ -15,7 +15,7 @@ $system_auth_require = 1;
 
 /* Admin users. for multiple user access */
 /* $admin_user_names = 'iokunev,admin2,admin3'; */
-$admin_user_names = '*';
+$admin_user_names = 'admin';
 
 /* $db_result_limit is the 'LIMIT' appended to the query */
 $db_result_limit = '100';

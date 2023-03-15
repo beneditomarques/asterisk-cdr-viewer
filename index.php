@@ -280,7 +280,7 @@ if ( isset($_REQUEST['need_csv']) && $_REQUEST['need_csv'] == 'true' ) {
 		fclose($handle);
 		$sth = NULL;
 	}
-	echo "<p class='right title'><a href='download.php?csv=$csv_file'>Click here to download CSV file</a></p>";
+	echo "<p class='right title'><a href='download.php?csv=$csv_file'>Clique aqui para baixar o arquivo CSV</a></p>";
 }
 
 if ( isset($_REQUEST['need_html']) && $_REQUEST['need_html'] == 'true' ) {
@@ -304,9 +304,9 @@ if ( isset($_REQUEST['need_html']) && $_REQUEST['need_html'] == 'true' ) {
 	if ( $tot_calls_raw ) {
 
 		if ( $tot_calls_raw > $result_limit ) {
-			echo '<p class="center title">Call Detail Record - Search Returned '. $result_limit .' of '. $tot_calls_raw .' Calls </p><table class="cdr">';
+			echo '<p class="center title">Detalhamento das chamadas - A busca retornou  '. $result_limit .' de '. $tot_calls_raw .' Chamadas </p><table class="cdr">';
 		} else {
-			echo '<p class="center title">Call Detail Record - Search Returned '. $tot_calls_raw .' Calls </p><table class="cdr">';
+			echo '<p class="center title">Detalhamento das chamadas - A busca retornou '. $tot_calls_raw .' Chamadas </p><table class="cdr">';
 		}
 
 		$i = $h_step - 1;
@@ -329,48 +329,48 @@ if ( isset($_REQUEST['need_html']) && $_REQUEST['need_html'] == 'true' ) {
 			if ($i == $h_step) {
 			?>
 				<tr>
-				<th class="record_col">Call Date</th>
+				<th class="record_col">Data</th>
 				<?php
 					if ( isset($display_column['file']) and $display_column['file'] == 1 ) {
 						echo '<th class="record_col">File</th>';
 						$rate_total_col++;
 					}
 				?>
-				<th class="record_col">Source</th>
-				<th class="record_col">Destination</th>
+				<th class="record_col">Origem</th>
+				<th class="record_col">Destino</th>
 				<?php
 					if ( isset($display_column['extension']) and $display_column['extension'] == 1 ) {
 						echo '<th class="record_col">Extension</th>';
 						$rate_total_col++;
 					}
 				?>
-				<th class="record_col">Duration</th>
-				<th class="record_col">Disposition</th>
+				<th class="record_col">Duração</th>
+				<th class="record_col">Disposição</th>
 				<?php
 					if ( isset($_REQUEST['use_callrates']) && $_REQUEST['use_callrates'] == 'true' ) {
 						echo '<th class="record_col">CallRate</th><th class="record_col">CallRate Dst</th>';
 						$rate_total = 0;
 					}
 					if ( isset($display_column['billsec']) and $display_column['billsec'] == 1 ) {
-						echo '<th class="record_col">BillSec</th>';
+						echo '<th class="record_col">Tempo falado</th>';
 					}
 					if ( isset($display_column['lastapp']) and $display_column['lastapp'] == 1 ) {
-						echo '<th class="record_col">Application</th>';
+						echo '<th class="record_col">Aplicação</th>';
 					}
 					if ( isset($display_column['channel']) and $display_column['channel'] == 1 ) {
-						echo '<th class="record_col">Src Channel</th>';
+						echo '<th class="record_col">Canal de origem</th>';
 					}
 					if ( isset($display_column['clid']) and $display_column['clid'] == 1 ) {
 						echo '<th class="record_col">CallerID</th>';
 					}
 					if ( isset($display_column['dstchannel']) and $display_column['dstchannel'] == 1 ) {
-						echo '<th class="record_col">Dst Channel</th>';
+						echo '<th class="record_col">Canal de destino</th>';
 					}
 					if ( isset($display_column['userfield']) and $display_column['userfield'] == 1 ) {
 						echo '<th class="record_col">Userfield</th>';
 					}
 					if ( isset($display_column['accountcode']) and $display_column['accountcode'] == 1 ) {
-						echo '<th class="record_col">Account</th>';
+						echo '<th class="record_col">Código da conta</th>';
 					}
 				?>
 				</tr>
@@ -449,79 +449,79 @@ $group_by_field_php = array( '', 32, '' );
 
 switch ($group) {
 	case "disposition_by_day":
-		$graph_col_title = 'Disposition by day';
+		$graph_col_title = 'Disposição por dia';
 		$group_by_field_php = array('%Y-%m-%d / ',17,'');
 		$group_by_field = "CONCAT(DATE_FORMAT(calldate, '$group_by_field_php[0]'),disposition)";
 	break;
 	case "disposition_by_hour":
-		$graph_col_title = 'Disposition by hour';
+		$graph_col_title = 'Disposição por hora';
 		$group_by_field_php = array( '%Y-%m-%d %H / ', 20, '' );
 		$group_by_field = "CONCAT(DATE_FORMAT(calldate, '$group_by_field_php[0]'),disposition)";
 	break;
 	case "disposition":
-		$graph_col_title = 'Disposition';
+		$graph_col_title = 'Disposição';
 	break;
 	case "dcontext":
-		$graph_col_title = 'Destination context';
+		$graph_col_title = 'Contexto de destino';
 	break;
 	case "accountcode":
-		$graph_col_title = 'Account Code';
+		$graph_col_title = 'Código de conta';
 	break;
 	case "dst":
-		$graph_col_title = 'Destination Number';
+		$graph_col_title = 'Destino';
 	break;
 	case "did":
 		$graph_col_title = 'DID';
 	break;
 	case "src":
-		$graph_col_title = 'Source Number';
+		$graph_col_title = 'Origem';
 	break;
 	case "clid":
 		$graph_col_title = 'Caller*ID';
 	break;
 	case "userfield":
-		$graph_col_title = 'User Field';
+		$graph_col_title = 'UserField';
 	break;
 	case "hour":
 		$group_by_field_php = array( '%Y-%m-%d %H', 13, '' );
 		$group_by_field = "DATE_FORMAT(calldate, '$group_by_field_php[0]')";
-		$graph_col_title = 'Hour';
+		$graph_col_title = 'Hora';
 	break;
 	case "hour_of_day":
 		$group_by_field_php = array('%H',2,'');
 		$group_by_field = "DATE_FORMAT(calldate, '$group_by_field_php[0]')";
-		$graph_col_title = 'Hour of day';
+		$graph_col_title = 'Hora do dia';
 	break;
 	case "week":
 		$group_by_field_php = array('%V',2,'');
 		$group_by_field = "DATE_FORMAT(calldate, '$group_by_field_php[0]') ";
-		$graph_col_title = 'Week ( Sun-Sat )';
+		$graph_col_title = 'Semana ( Dom-Sab )';
 	break;
 	case "month":
 		$group_by_field_php = array('%Y-%m',7,'');
 		$group_by_field = "DATE_FORMAT(calldate, '$group_by_field_php[0]')";
-		$graph_col_title = 'Month';
+		$graph_col_title = 'Mês';
 	break;
 	case "day_of_week":
 		$group_by_field_php = array('%w - %A',20,'');
 		$group_by_field = "DATE_FORMAT( calldate, '%w - %W' )";
-		$graph_col_title = 'Day of week';
+		$graph_col_title = 'Dia da semana';
 	break;
 	case "minutes1":
 		$group_by_field_php = array( '%Y-%m-%d %H:%M', 16, '' );
 		$group_by_field = "DATE_FORMAT(calldate, '%Y-%m-%d %H:%i')";
-		$graph_col_title = 'Minute';
+		$graph_col_title = 'Minuto';
 	break;
 	case "minutes10":
 		$group_by_field_php = array('%Y-%m-%d %H:%M',15,'0');
 		$group_by_field = "CONCAT(SUBSTR(DATE_FORMAT(calldate, '%Y-%m-%d %H:%i'),1,15), '0')";
-		$graph_col_title = '10 Minutes';
+		$graph_col_title = '10 Minutos';
 	break;
 	case "day":
 	default:
 		$group_by_field_php = array('%Y-%m-%d',10,'');
 		$group_by_field = "DATE_FORMAT(calldate, '$group_by_field_php[0]')";
-		$graph_col_title = 'Day';
+		$graph_col_title = 'Dia';
 }
 
 if ( isset($_REQUEST['need_chart']) && $_REQUEST['need_chart'] == 'true' ) {
@@ -561,7 +561,7 @@ if ( isset($_REQUEST['need_chart']) && $_REQUEST['need_chart'] == 'true' ) {
 	$tot_duration = sprintf('%02d', intval($tot_duration_secs/60)).':'.sprintf('%02d', intval($tot_duration_secs%60));
 
 	if ( $tot_calls ) {
-		echo '<p class="center title">Call Detail Record - Call Graph by '.$graph_col_title.'</p><table class="cdr">
+		echo '<p class="center title">Detalhamento das chamadas - Call Graph by '.$graph_col_title.'</p><table class="cdr">
 		<tr>
 			<th class="end_col">'. $graph_col_title . '</th>
 			<th>&nbsp;</th>
@@ -691,7 +691,7 @@ if ( isset($_REQUEST['need_chart_cc']) && $_REQUEST['need_chart_cc'] == 'true' )
 		}
 	}
 	if ( $tot_calls ) {
-		echo '<p class="center title">Call Detail Record - Concurrent Calls by '.$graph_col_title.'</p><table class="cdr">
+		echo '<p class="center title">Detalhamento das chamadas - Concurrent Calls by '.$graph_col_title.'</p><table class="cdr">
 		<tr>
 			<th class="end_col">'. $graph_col_title . '</th>
 			<th class="center_col">Total Calls: '. $tot_calls .' / Max Calls: '. $max_calls .'</th>
@@ -721,13 +721,13 @@ if ( isset($_REQUEST['need_minutes_report']) && $_REQUEST['need_minutes_report']
 	$tot_calls = 0;
 	$tot_duration = 0;
 
-	echo '<p class="center title">Call Detail Record - Minutes report by '.$graph_col_title.'</p><table class="cdr">
+	echo '<p class="center title">Detalhamento das chamadas - Relatório de minutagem por '.$graph_col_title.'</p><table class="cdr">
 		<tr>
 			<th class="end_col">'. $graph_col_title . '</th>
-			<th class="end_col">Call counts</th>
-			<th class="end_col">Billable Sec</th>
-			<th class="end_col">Billable Minutes</th>
-			<th class="end_col">AVG Minutes</th>
+			<th class="end_col">Número de chamadas</th>
+			<th class="end_col">Tempo falado (Segundos)</th>
+			<th class="end_col">Tempo falado (Minutos)</th>
+			<th class="end_col">Total de Minutos</th>
 		</tr>';
 
 	try {
@@ -774,7 +774,7 @@ if ( isset($_REQUEST['need_asr_report']) && $_REQUEST['need_asr_report'] == 'tru
 	$tot_calls = 0;
 	$tot_duration = 0;
 
-	echo '<p class="center title">Call Detail Record - ASR / ACD report by '.$graph_col_title.'</p><table class="cdr">
+	echo '<p class="center title">Detalhamento das chamadas - ASR / ACD report by '.$graph_col_title.'</p><table class="cdr">
 		<tr>
 			<th class="end_col">'. $graph_col_title . '</th>
 			<th class="end_col">ASR</th>

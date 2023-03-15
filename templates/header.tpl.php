@@ -74,9 +74,9 @@
 		<tr>
 			<td id="header_logo" rowspan="2" align="left"><a href="/" title="Home"><img src="templates/images/asterisk.gif" alt="Asterisk CDR Viewer" /></a></td>
 			<td id="header_title">Asterisk CDR Viewer</td>
-			<td align='right'>
+			<!--- <td align='right'>
 				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XVUVZY5D922JJ&lc=RU&item_name=i%2eo%2e&item_number=asterisk%2dcdr&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" align="center"/></a>
-			</td>
+			</td> -->
 		</tr>
 		<tr>
 		<td id="header_subtitle">&nbsp;</td>
